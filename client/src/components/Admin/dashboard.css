@@ -1,0 +1,21 @@
+
+.admin__container{
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    justify-content: space-between;
+}
+
+.admin__container h3{
+    padding-top: 1rem;
+    cursor: pointer;
+}
+
+.tabs{
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+
