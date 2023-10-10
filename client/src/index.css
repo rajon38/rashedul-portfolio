@@ -104,6 +104,11 @@ a:hover{
   color: var(--color-bg);
 }
 
+.btn-warning{
+  background: #f9ff4d;
+  color: var(--color-bg);
+}
+
 img{
   display: block;
   width: 100%;

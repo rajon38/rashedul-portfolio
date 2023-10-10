@@ -1,0 +1,16 @@
+
+.Title{
+    text-align: center;
+    color: var(--color-white);
+}
+
+.Title h1{
+    padding-bottom: 2rem;
+}
+
+.number {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './dashboard.css'
+import './CSS/dashboard.css'
 
 import {Tabs} from 'antd'
 import AdminIntro from "./AdminIntro";
