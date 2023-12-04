@@ -1,0 +1,32 @@
+.Title{
+    text-align: center;
+    color: var(--color-white);
+}
+
+.contact__container2{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact__container2 > div{
+    background: var(--color-bg-variant);
+    padding: 2.4rem 5rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.contact__container2 > div:hover{
+    background: transparent;
+    border-color: var(--color-primary-variant);
+    cursor: default;
+}
+
+.contact__container2 > div h2{
+    color: var(--color-white);
+}
+
+.contact__container2 > div h3,small{
+    color: var(--color-light);
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, Suspense} from 'react';
 import './CSS/dashboard.css'
 
 import {Tabs} from 'antd'
@@ -9,9 +9,11 @@ import AdminExperience from "./AdminExperience";
 import AdminPortfolio from "./AdminPortfolio";
 import AdminTestimonial from "./AdminTestimonial";
 import AdminContact from "./AdminContact";
+import LazyLoader from "../MasterLayout/LazyLoader";
 const {TabPane} = Tabs
 const Dashboard = () => {
     return (
+        <Fragment>
         <div className='container'>
             <div className="admin__container">
                 <div className="admin__title">
@@ -27,6 +29,7 @@ const Dashboard = () => {
                 </h3>
             </div>
 
+            <Suspense fallback={<LazyLoader/>}>
             <div className="tabs">
                 <Tabs defaultActiveKey='1'>
                     <TabPane tab='Intro' key='1'>
@@ -52,7 +55,9 @@ const Dashboard = () => {
                     </TabPane>
                 </Tabs>
             </div>
+            </Suspense>
         </div>
+        </Fragment>
     );
 };
 

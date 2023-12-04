@@ -106,7 +106,12 @@ a:hover{
 
 .btn-warning{
   background: #f9ff4d;
-  color: var(--color-bg);
+  color: #ff4d4d;
+}
+
+.btn-danger{
+  background: #ff4d4d;
+  color: var(--color-white);
 }
 
 img{
@@ -117,6 +122,10 @@ img{
 
 .ant-tabs-tab-btn{
   color: var(--color-light);
+}
+
+.ant-form-item-control-input-content>input{
+  color: var(--color-bg);
 }
 
 /* ======== Media Queries (Medium Devices) ====== */
@@ -149,5 +158,7 @@ img{
 .ant-tabs-tab-btn{
   color: var(--color-light);
 }
+
+
 
 

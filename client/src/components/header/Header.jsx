@@ -15,7 +15,7 @@ const Header = () => {
 
     const fullName = intro && intro.fullName;
     const title = intro && intro.title;
-    const imageBase64 = intro && intro.image; // Assuming intro.image is the base64 string
+    const image = intro && intro.image;
 
     return (
         <header>
@@ -27,7 +27,7 @@ const Header = () => {
                 <HeaderSocials/>
 
                 <div className='me'>
-                    {imageBase64 && <img src={`${imageBase64}`} alt="me" />}
+                    <img src={image} alt="me" />
                 </div>
 
                 <a href="#contact" className='scroll__down'>Scroll Down</a>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const testimonialSchema = new mongoose.Schema({
-    avatar:{
+    image:{
         type: String,
         required: true,
     },

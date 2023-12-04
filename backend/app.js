@@ -15,10 +15,12 @@ const cors =require('cors');
 
 // Database Lib Import
 const mongoose =require('mongoose');
+const {diskStorage} = require("multer");
 
 // Security Middleware Implement
 app.use(cors())
-app.use(helmet())
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(express.static('public'));
 app.use(mongoSanitize())
 app.use(xss())
 app.use(hpp())
@@ -78,7 +80,7 @@ app.use("*",(req,res)=>{
     res.status(404).json({status:"fail",data:"Not Found"})
 })
 
-module.exports=app;
+module.exports= app;
 
 
 

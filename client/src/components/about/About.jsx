@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.css'
-import ME from '../../assets/about.jpeg'
+//import ME from '../../assets/about.jpeg'
 import {FaAward} from "react-icons/fa";
 import {FiUsers} from "react-icons/fi";
 import {VscFolderLibrary} from "react-icons/vsc";
@@ -17,7 +17,7 @@ const About = () => {
     const experience = about && about.experience
     const clients = about && about.clients
     const projects = about && about.projects
-    const imageBase64 = about && about.image;
+    const image = about && about.image;
     return (
         <section id='about'>
             <h5>Get To Know</h5>
@@ -26,7 +26,7 @@ const About = () => {
             <div className="container about__container">
                 <div className="about__me">
                     <div className="about__me-image">
-                        {imageBase64 && <img src={`${imageBase64}`} alt="me" />}
+                        <img src={image} alt="me" />
                     </div>
                 </div>
 

@@ -49,7 +49,7 @@ const Testimonials = () => {
                 {testimonialData && testimonialData.map((item, index)=>(
                     <SwiperSlide className="testimonial" key={index}>
                         <div className="client__avatar">
-                            <img src={item.avatar} alt="Avatar" />
+                            <img src={item.image} alt="Avatar" />
                         </div>
                         <h5 className="client__name">{item.name}</h5>
                         <small className="client__review">{item.review}</small>

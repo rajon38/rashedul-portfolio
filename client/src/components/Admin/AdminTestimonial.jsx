@@ -1,9 +1,9 @@
 import React from 'react';
-
+import './CSS/adminTestimonial.css'
 const AdminTestimonial = () => {
     return (
         <div>
-            <h1>Testimonial</h1>
+            <h1 className="Title">Testimonial</h1>
         </div>
     );
 };

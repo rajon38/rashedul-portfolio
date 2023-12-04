@@ -1,0 +1,35 @@
+.modal-dialog{
+    display: grid;
+    padding-top: 2rem;
+}
+
+.modal-content{
+    background: var(--color-bg-variant);
+    padding: 1.2rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+
+}
+
+.modal-content:hover{
+    border-color: var(--color-primary-variant);
+    background: transparent;
+}
+
+
+.modal-header>h3{
+    color: var(--color-white);
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
+
+.modal-footer{
+    padding-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
