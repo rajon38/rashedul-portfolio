@@ -14,6 +14,9 @@
 .education__contents{
     display: grid;
     gap: 2rem;
+    background: #17174d;
+    border-radius: 1rem;
+    padding: 2rem;
 }
 
 

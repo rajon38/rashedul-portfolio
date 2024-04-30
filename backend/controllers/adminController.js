@@ -9,6 +9,7 @@ const Contact = require('../models/contactModel')
 
 const jwt =require("jsonwebtoken");
 const User = require("../models/adminModel");
+const {userDetailsService} = require("../Services/userDetailsService");
 const JWT_SECRET = "thisNotSecret1245"
 
 exports.register = async (req, res) => {
@@ -115,3 +116,29 @@ exports.portfolioData = async (req,res)=>{
         res.status(500).send(error);
     }
 }
+
+exports.userDetails = async (req, res) => {
+    let Result = await userDetailsService(User);
+    try {
+        const aboutData = await About.find();
+        const contactData = await Contact.find();
+        const educationData = await Education.find();
+        const experienceData = await Experience.find();
+        const introData = await Intro.find();
+        const portfolioData = await Portfolio.find();
+        const testimonialData = await Testimonial.find();
+
+        res.status(200).json({
+            about: aboutData,
+            contact: contactData,
+            education: educationData,
+            experience: experienceData,
+            intro: introData,
+            portfolio: portfolioData,
+            testimonial: testimonialData
+
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};

@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 import './CSS/adminContact.css'
 const AdminContact = () => {
     const state = useSelector(state => state.root);
-    const { portfolioData } = state;
-    const contactData = portfolioData && portfolioData.contact;
+    const { userDetails } = state;
+    const contactData = userDetails && userDetails.contact;
     return (
         <div>
             <h1 className="Title">Contact</h1>

@@ -10,22 +10,25 @@ const BaseURL = 'http://localhost:9000/api/v1'
 const AdminPortfolio = () => {
     const dispatch = useDispatch();
     const state = useSelector(state => state.root);
-    const { portfolioData } = state;
-    const AdminPortfolioData = portfolioData && portfolioData.portfolio;
+    const { userDetails } = state;
+    const AdminPortfolioData = userDetails && userDetails.portfolio;
     const [showAddEditModal, setShowAddEditModal] = useState(false);
     const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
     const [type, setType] = useState("add");
 
-    // const [isOpen, setIsOpen] = useState(false);
-    // const [selectedItem, setSelectedItem] = useState(null);
-    // const handleOpenModal = (item) => {
-    //     setSelectedItem(item);
-    //     setIsOpen(true);
-    // }
-    //
-    // const handleCloseModal = () => {
-    //     setIsOpen(false);
-    // }
+    //issues
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const handleOpenModal = (item) => {
+        setSelectedItem(item);
+        setIsOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsOpen(false);
+    }
+
+    //issues
 
     const onFinish = async (values) => {
         try {

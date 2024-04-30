@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 
 const AdminEducation = () => {
     const state = useSelector(state => state.root);
-    const { portfolioData } = state;
-    const educationData = portfolioData && portfolioData.education[0];
+    const { userDetails } = state;
+    const educationData = userDetails && userDetails.education[0];
 
     const academic = educationData && educationData.academic;
     const backend = educationData && educationData.backend;

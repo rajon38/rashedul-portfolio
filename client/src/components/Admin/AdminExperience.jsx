@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 
 const AdminExperience = () => {
     const state = useSelector(state => state.root);
-    const { portfolioData } = state;
-    const experienceData = portfolioData && portfolioData.experience[0];
+    const { userDetails } = state;
+    const experienceData = userDetails && userDetails.experience[0];
 
     const frontend = experienceData && experienceData.frontend;
     const backend = experienceData && experienceData.backend;

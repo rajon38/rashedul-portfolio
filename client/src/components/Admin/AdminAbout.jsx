@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 const AdminAbout = () => {
     const form = useRef();
     const state = useSelector(state => state.root);
-    const { portfolioData } = state;
-    const AboutData = portfolioData && portfolioData.about[0];
+    const { userDetails } = state;
+    const AboutData = userDetails && userDetails.about[0];
     const sendForm = (e) => {
         e.preventDefault();
     }

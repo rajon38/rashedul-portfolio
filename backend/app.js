@@ -46,8 +46,14 @@ const limiter = rateLimit({
 });
 app.use(limiter)
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ status: 'error', message: 'Something went wrong!' });
+});
+
 // Enable trust proxy to correctly identify client IP behind proxies
 app.set('trust proxy', true);
+
 
 // Mongo DB Database Connection
 let URI="mongodb+srv://<username>:<password>@cluster0.aw6azwi.mongodb.net/rajonPortfolio?retryWrites=true&w=majority";

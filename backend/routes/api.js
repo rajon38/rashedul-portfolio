@@ -1,5 +1,5 @@
 const express = require("express");
-const {login,register, portfolioData} = require("../controllers/adminController");
+const {login,register, portfolioData, userDetails} = require("../controllers/adminController");
 const {create, update, remove, read} = require("../controllers/introController");
 const {createAbout, updateAbout, readAbout} = require("../controllers/aboutController")
 const {checkAuth} = require("../middleware/check-auth");
@@ -14,6 +14,7 @@ const router = express.Router();
 
 router.post("/signup", register);
 router.post("/login",  login);
+router.get("/userDetails",checkAuth,userDetails)
 
 //portfolio
 router.get("/", portfolioData);

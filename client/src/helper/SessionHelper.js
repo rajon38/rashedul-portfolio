@@ -1,31 +1,42 @@
-class SessionHelper{
-    setToken(token){
-        localStorage.setItem("token",token)
+import {LogoutSuccess, LoginSuccess} from "../redux/rootSlice";
+
+let store;
+
+class SessionHelper {
+    setStore(s) {
+        store = s;
     }
-    getToken(){
-        return localStorage.getItem("token")
+
+    setToken(token) {
+        localStorage.setItem("token", token);
+        store.dispatch(LoginSuccess(token));
     }
-    setUserDetails(UserDetails){
-        localStorage.setItem("UserDetails",JSON.stringify(UserDetails))
+
+    getToken() {
+        const token = localStorage.getItem("token");
+        return token;
     }
-    getUserDetails(){
-        return JSON.parse(localStorage.getItem("UserDetails"))
+
+    setUserDetails(userDetails) {
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
     }
-    setEmail(Email){
-        localStorage.setItem("Email",Email)
+
+    getUserDetails() {
+        const userDetailsString = localStorage.getItem("userDetails");
+        return JSON.parse(userDetailsString);
     }
-    getEmail(){
-        return localStorage.getItem("Email")
+
+    removeSessions = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userDetails");
+        store.dispatch(LogoutSuccess());
+        window.location.href = "/login";
     }
-    setOTP(OTP){
-        localStorage.setItem("OTP",OTP)
-    }
-    getOTP(){
-        return localStorage.getItem("OTP")
-    }
-    removeSessions=()=>{
-        localStorage.clear();
-        window.location.href="/login"
+
+    isAuthenticated() {
+        const token = this.getToken();
+        return !!token;
     }
 }
-export const {setEmail,getEmail,setOTP,getOTP,setToken,getToken,setUserDetails,getUserDetails,removeSessions}=new SessionHelper();
+
+export const sessionHelper = new SessionHelper();
