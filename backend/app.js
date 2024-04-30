@@ -59,7 +59,7 @@ app.set('trust proxy', true);
 let URI="mongodb+srv://<username>:<password>@cluster0.aw6azwi.mongodb.net/rajonPortfolio?retryWrites=true&w=majority";
 let OPTION={user:'rashedul',pass:'170174Rajon',autoIndex:true}
 mongoose
-    .set('strictQuery',true)
+    .set('strictQuery',false)
     .connect(URI,OPTION)
     .then(()=>{
         console.log('Connected to DB')
