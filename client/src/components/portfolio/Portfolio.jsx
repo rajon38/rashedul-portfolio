@@ -49,6 +49,7 @@ const Portfolio = () => {
     const state = useSelector(state => state.root);
     const { portfolioData } = state;
     const PortfolioData = portfolioData && portfolioData.portfolio;
+    const BaseURL = process.env.REACT_APP_BASE_URL;
 
 
 
@@ -61,7 +62,7 @@ const Portfolio = () => {
                 {PortfolioData && PortfolioData.map((item, index) => (
                     <article key={index} className="portfolio__item">
                     <div className="portfolio__item-image">
-                    <img src={item.image} alt={item.title}/>
+                    <img src={`${BaseURL}/${item.image}`} alt={item.title}/>
                     </div>
                     <h3>{item.title}</h3>
                     <div className="portfolio__item-cta">

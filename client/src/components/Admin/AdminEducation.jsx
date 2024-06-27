@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import './CSS/adminEducation.css'
 import {useSelector} from "react-redux";
+import AdminModal from './AdminModal';
 
 const AdminEducation = () => {
     const state = useSelector(state => state.root);
@@ -10,71 +11,84 @@ const AdminEducation = () => {
     const academic = educationData && educationData.academic;
     const backend = educationData && educationData.backend;
 
+    const [isModalOpen1, setIsModalOpen1] = useState(false);
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
 
-    const form = useRef();
-
-    const sendForm = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-    }
-
-    // Step 2: Create a state variable to keep track of the input fields
-    const [inputFields, setInputFields] = useState([{ value: '' }]);
-    const [inputFields2, setInputFields2] = useState([{ value: '' }]);
-    // Step 3: Define a function to add a new input field
-    const addInputField = () => {
-        setInputFields([...inputFields, { value: '' }]);
-    };
-
-    const addInputField2 = () => {
-        setInputFields2([...inputFields2, { value: '' }]);
-    };
+        const title = e.target.title.value;
+        const desc = e.target.desc.value;
+        const duration = e.target.duration.value;
+    
+        const formData = {
+            title: title,
+            desc: desc,
+            duration: duration
+     
+        };
+        console.log("From submitted : ", formData);
+      };
+   
+    
 
     return (
         <div>
             <h1 className='Title'>Education</h1>
             <div>
-                <form ref={form} onSubmit={sendForm}>
+        
                 <div className="education__container2">
                     <div className="education__frontend">
                         <h3>Academic</h3>
                         <div className="education__content2">
                             {academic && academic.map((item, index)=>(
                                 <div key={index}  className="education__contents">
-                                    <input type="text" name="name" value={item.title} onChange={''} placeholder="Your Full Name"/>
-                                    <input type="text" name="name" value={item.desc} onChange={''} placeholder="Your Full Name"/>
-                                    <input type="text" name="name" value={item.duration} onChange={''} placeholder="Your Full Name"/>
+                                    <input type="text" name="name" value={item.title} readOnly placeholder="title"/>
+                                    <input type="text" name="name" value={item.desc} readOnly placeholder="desc"/>
+                                    <input type="text" name="name" value={item.duration} readOnly placeholder="duration"/>
                                 </div>
                             ))}
                         </div>
-                            <div className="inputs" >
-                                {inputFields2.map((field, index) => (
-                                    <div key={index} className="indexs">
-                                        <input type="text" value={field.value} placeholder="Title"
-                                               onChange={(e) => {
-                                                   const updatedFields2 = [...inputFields2];
-                                                   updatedFields2[index].value = e.target.value;
-                                                   setInputFields2(updatedFields2);
-                                               }}
-                                        />
-                                        <input type="text" value={field.value} placeholder="Description"
-                                               onChange={(e) => {
-                                                   const updatedFields = [...inputFields];
-                                                   updatedFields[index].value = e.target.value;
-                                                   setInputFields(updatedFields);
-                                               }}
-                                        />
-                                        <input type="text" value={field.value} placeholder="Duration"
-                                               onChange={(e) => {
-                                                   const updatedFields = [...inputFields];
-                                                   updatedFields[index].value = e.target.value;
-                                                   setInputFields(updatedFields);
-                                               }}
-                                        />
-                                    </div>
-                                ))}
-                                <button type='submit' onClick={addInputField2} className="btn btn-warning">Add new field</button>
-
-                            </div>
+                           <div className="text-xl pt-8">
+              <button
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                onClick={() => setIsModalOpen1(true)}
+              >
+                Add New Education
+              </button>
+              <AdminModal
+                isOpen={isModalOpen1}
+                setIsOpen={setIsModalOpen1}
+                title="Add new Education"
+              >
+                <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="title"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="desc"
+                    placeholder="desc"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="duration"
+                    placeholder='duration'
+                    required
+                  />
+              
+                  <button
+                    type="submit"
+                    className="btn btn-sm bg-green-200 text-white border-none font-semibold"
+                  >
+                    ADD
+                  </button>
+                </form>
+              </AdminModal>
+            </div>
                     </div>
 
 
@@ -85,45 +99,55 @@ const AdminEducation = () => {
                         <div className="education__content2">
                             {backend && backend.map((item, index)=>(
                                 <div key={index} className="education__contents">
-                                <input type="text" name="name" value={item.title} onChange={''} placeholder="Your Full Name"/>
-                                <input type="text" name="name" value={item.desc} onChange={''} placeholder="Your Full Name"/>
-                                <input type="text" name="name" value={item.duration} onChange={''} placeholder="Your Full Name"/>
+                                <input type="text" name="name" value={item.title} readOnly placeholder="title"/>
+                                <input type="text" name="name" value={item.desc} readOnly placeholder="desc"/>
+                                <input type="text" name="name" value={item.duration} readOnly placeholder="duration"/>
                                 </div>
                             ))}
                         </div>
-                            <div className="inputs">
-                                {inputFields.map((field, index) => (
-                                    <div key={index} className="indexs">
-                                        <input type="text" value={field.value} placeholder="Title"
-                                               onChange={(e) => {
-                                                   const updatedFields = [...inputFields];
-                                                   updatedFields[index].value = e.target.value;
-                                                   setInputFields(updatedFields);
-                                               }}
-                                        />
-                                        <input type="text" value={field.value} placeholder="Description"
-                                               onChange={(e) => {
-                                                   const updatedFields = [...inputFields];
-                                                   updatedFields[index].value = e.target.value;
-                                                   setInputFields(updatedFields);
-                                               }}
-                                        />
-                                        <input type="text" value={field.value} placeholder="Duration"
-                                               onChange={(e) => {
-                                                   const updatedFields = [...inputFields];
-                                                   updatedFields[index].value = e.target.value;
-                                                   setInputFields(updatedFields);
-                                               }}
-                                        />
-                                    </div>
-                                ))}
-
-                                <button type='submit' onClick={addInputField} className="btn btn-warning">Add new field</button>
-                            </div>
-                    </div>
-                    <button type='submit' className="btn btn-primary">Update</button>
-                </div>
+                        <div className="text-xl pt-8">
+              <button
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                onClick={() => setIsModalOpen2(true)}
+              >
+                Add New Course
+              </button>
+              <AdminModal
+                isOpen={isModalOpen2}
+                setIsOpen={setIsModalOpen2}
+                title="Add new Course"
+              >
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="title"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="desc"
+                    placeholder="desc"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="duration"
+                    placeholder='duration'
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="btn btn-sm bg-green-200 text-white border-none font-semibold"
+                  >
+                    ADD
+                  </button>
                 </form>
+              </AdminModal>
+            </div>
+                    </div>
+                </div>
+        
             </div>
         </div>
     );

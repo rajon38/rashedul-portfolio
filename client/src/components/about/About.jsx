@@ -10,14 +10,17 @@ const About = () => {
     const state = useSelector(state => state.root);
     const { portfolioData } = state;
     const aboutData = portfolioData && portfolioData.about;
+    const BaseURL = process.env.REACT_APP_BASE_URL;
 
     const about = aboutData && aboutData[0]
 
     const desc = about && about.desc
     const experience = about && about.experience
     const clients = about && about.clients
-    const projects = about && about.projects
-    const image = about && about.image;
+    const projects = about && about.rpojects
+    const image = about && about?.image;
+    const imageUrl = image ? `http://localhost:9000/${image}` : '';
+    console.log("About", image)
     return (
         <section id='about'>
             <h5>Get To Know</h5>
@@ -26,7 +29,7 @@ const About = () => {
             <div className="container about__container">
                 <div className="about__me">
                     <div className="about__me-image">
-                        <img src={image} alt="me" />
+                        <img src={`${BaseURL}/${image}`} alt="me" />
                     </div>
                 </div>
 

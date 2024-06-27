@@ -33,6 +33,7 @@ const Testimonials = () => {
     const state = useSelector(state => state.root);
     const { portfolioData } = state;
     const testimonialData = portfolioData && portfolioData.testimonial;
+    const BaseURL = process.env.REACT_APP_BASE_URL;
 
     return (
         <section id='testimonials'>
@@ -49,7 +50,7 @@ const Testimonials = () => {
                 {testimonialData && testimonialData.map((item, index)=>(
                     <SwiperSlide className="testimonial" key={index}>
                         <div className="client__avatar">
-                            <img src={item.image} alt="Avatar" />
+                            <img src={`${BaseURL}/${item.image}`} alt="Avatar" />
                         </div>
                         <h5 className="client__name">{item.name}</h5>
                         <small className="client__review">{item.review}</small>

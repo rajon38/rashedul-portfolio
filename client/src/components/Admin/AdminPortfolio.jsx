@@ -5,11 +5,12 @@ import {Form, Modal} from "antd";
 import {HideLoader, ReloadData, ShowLoader} from "../../redux/rootSlice";
 import axios from "axios";
 import {ErrorToast, SuccessToast} from "../../helper/FormHelper";
-const BaseURL = 'http://localhost:9000/api/v1'
 
 const AdminPortfolio = () => {
     const dispatch = useDispatch();
     const state = useSelector(state => state.root);
+    const BaseURL = process.env.REACT_APP_BASE_URL;
+
     const { userDetails } = state;
     const AdminPortfolioData = userDetails && userDetails.portfolio;
     const [showAddEditModal, setShowAddEditModal] = useState(false);
@@ -89,7 +90,7 @@ const AdminPortfolio = () => {
                 {AdminPortfolioData && AdminPortfolioData.map((portfolio) => (
                     <article className="portfolio__item2">
                         <div className="portfolio__item-image2">
-                            <img src={portfolio.image} alt={portfolio.title}/>
+                            <img src={`${BaseURL}/${portfolio.image}`} alt={portfolio.title}/>
                         </div>
                         <h3>{portfolio.title}</h3>
                         <div className="portfolio__item-cta2">

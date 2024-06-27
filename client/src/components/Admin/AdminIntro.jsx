@@ -8,6 +8,7 @@ const AdminIntro = () => {
     const { userDetails } = state;
     const AdminIntroData = userDetails && userDetails.intro[0];
 
+    const BaseURL = process.env.REACT_APP_BASE_URL;
 
     const [imageFileName, setImageFileName] = useState('');
 
@@ -33,7 +34,7 @@ const AdminIntro = () => {
                     <label htmlFor="image">Select a picture:</label>
                     <input type="file" name="image" accept="image/*" onChange={handleImageChange} />
 
-                    {AdminIntroData?.image && <img src={`${AdminIntroData?.image}`} alt="User" className='Img'/>}
+                    {AdminIntroData?.image && <img src={`${BaseURL}/${AdminIntroData?.image}`} alt="User" className='Img'/>}
 
                     <label htmlFor="resume">Select a resume:</label>
                     <input type="file" name="resume" accept=".pdf" />

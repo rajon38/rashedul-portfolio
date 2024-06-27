@@ -10,8 +10,8 @@ const Modal = ({ isOpen, handleClose, selectedItem }) => {
 
     return (
         <div className={`modal fade ${isOpen ? 'show' : ''}`} id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style={{ display: isOpen ? 'block' : 'none' }}>
-            <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content">
+            <div className="modal-dialog modal-dialog-centered "  role="document">
+                <div className="modal-content ">
                     <div className="modal-header">
                         <h3 className="modal-title" id="exampleModalLongTitle">Modal title</h3>
                     </div>
@@ -25,7 +25,7 @@ const Modal = ({ isOpen, handleClose, selectedItem }) => {
                             </form>
                         )}
                     </div>
-                    <div className="modal-footer">
+                    <div className="modal-footer ">
                         <button type="button" className="btn btn-danger" onClick={handleClose}>Close</button>
                         <button type="button" className="btn btn-primary">Save changes</button>
                     </div>

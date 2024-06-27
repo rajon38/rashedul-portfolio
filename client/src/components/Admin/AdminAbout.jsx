@@ -3,6 +3,8 @@ import './CSS/adminAbout.css'
 import {useSelector} from "react-redux";
 const AdminAbout = () => {
     const form = useRef();
+    const BaseURL = process.env.REACT_APP_BASE_URL;
+
     const state = useSelector(state => state.root);
     const { userDetails } = state;
     const AboutData = userDetails && userDetails.about[0];
@@ -21,7 +23,7 @@ const AdminAbout = () => {
             <div >
                 <form ref={form} onSubmit={sendForm}>
                     <input type="file" name="file"  placeholder="Your File" />
-                    {AboutData.image && <img src={`${AboutData.image}`} alt="User" className='Img2'/>}
+                    {AboutData.image && <img src={`${BaseURL}/${AboutData.image}`} alt="User" className='Img2'/>}
                     <textarea name="message" rows="7" value={AboutData.desc} placeholder="Your Message"/>
                     <div className="number">
                     <input type="number" min="0" value={AboutData.experience} onChange={preventMinus}  name="number" placeholder="Your Experience" />
