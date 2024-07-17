@@ -25,8 +25,12 @@ exports.readAbout = async (req, res) => {
 };
 
 exports.updateAbout = async (req,res) => {
+    const { _id } = req.params;
+    const updatedData = req.body;
 
-    if (req.files && req.files['image'][0].size > 2 * 1024 * 1024) {
+    const imageFile = req.files && req.files['image'] && req.files['image'][0];
+
+    if (imageFile > 2 * 1024 * 1024) {
         const formattedSize = fileSizeFormatter(req.files['image'][0].size, 2);
         return res.status(400).json({
             status: "fail",

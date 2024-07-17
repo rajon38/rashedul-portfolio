@@ -39,5 +39,6 @@ const rootSlice = createSlice({
     },
 });
 
+export const { ShowLoader, HideLoader, SetPortfolioData, ReloadData, LoginSuccess, LogoutSuccess, SetUserDetails } = rootSlice.actions;
+
 export default rootSlice.reducer;
-export const { ShowLoader, HideLoader, SetPortfolioData, ReloadData,LoginSuccess, LogoutSuccess,SetUserDetails} = rootSlice.actions;
